@@ -38,8 +38,8 @@ actor MealDataManager: MealDataService {
     
     private func convertIngredient(name: String?, measurement: String?) -> Ingredient? {
         if let name, let measurement {
-            if !name.isEmpty || !measurement.isEmpty {
-                return .init(name: name, measurement: measurement)
+            if !name.isEmpty && !measurement.isEmpty {
+                return .init(name: name.capitalized, measurement: measurement)
             }
         }
         

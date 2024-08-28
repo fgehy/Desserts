@@ -20,11 +20,21 @@ struct MealListView: View {
             case .fetching:
                 LoadingView()
             case .loaded(let meals):
-                List {
-                    ForEach(meals) { meal in
-                        MealListRow(name: meal.name, thumbnail: meal.thumbNail)
+                NavigationStack {
+                    List {
+                        ForEach(meals) { meal in
+                            NavigationLink(value: meal) {
+                                MealListRow(name: meal.name, thumbnail: meal.thumbNail)
+                            }
+                        }
                     }
+                    .navigationDestination(for: Meal.self) { meal in
+                        let viewModel = MealDetailViewModel(dataManager: viewModel.dataManager, mealId: meal.id)
+                        MealDetailView(viewModel: viewModel)
+                    }
+                    .navigationTitle("Recipes")
                 }
+                
             case .error(let err):
                 ErrorView(title: err.errorTitle,
                           subtitle: err.errorSubtitle,
@@ -45,6 +55,7 @@ struct MealListView: View {
 }
 
 #Preview {
+    //TODO: Create mock manager and pass it in there
     let networkManager = MealNetworkManager(endpoint: "https://themealdb.com/api/json/v1/1")
     let dataManager = MealDataManager(networkManager: networkManager)
     return MealListView(viewModel: MealListViewModel(dataManager: dataManager))

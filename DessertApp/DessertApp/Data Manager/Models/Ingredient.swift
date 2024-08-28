@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct Ingredient: Identifiable {
+struct Ingredient {
     var id: String {
         name
     }
@@ -15,3 +15,5 @@ struct Ingredient: Identifiable {
     let name: String
     let measurement: String
 }
+
+extension Ingredient: Hashable, Identifiable {}

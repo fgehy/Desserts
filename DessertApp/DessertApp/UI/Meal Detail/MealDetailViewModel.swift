@@ -1,5 +1,5 @@
 //
-//  MealListViewModel.swift
+//  MealDetailViewModel.swift
 //  DessertApp
 //
 //  Created by Fabrice Gehy on 8/28/24.
@@ -7,34 +7,36 @@
 
 import Foundation
 
-final class MealListViewModel: ObservableObject {
-    let dataManager: MealDataService
+final class MealDetailViewModel: ObservableObject {
+    private let dataManager: MealDataService
+    private let mealId: String
+    
     @Published private(set) var state: DataState = .fetching
     
-    init(dataManager: MealDataService) {
+    init(dataManager: MealDataService, mealId: String) {
         self.dataManager = dataManager
+        self.mealId = mealId
     }
     
     @MainActor
-    func fetchMeals() async {
+    func fetchDetails() async {
         state = .fetching
         
         do {
-            let meals = try await dataManager.getMeals(category: .dessert).sorted(by: { $0.name < $1.name } )
-            state = .loaded(meals: meals)
+            let meal = try await dataManager.getMealDetails(id: mealId)
+            state = .loaded(meal: meal)
         } catch {
             if let err = error as? MealError {
                 state = .error(error: err)
             } else {
                 state = .error(error: MealError.other)
             }
-            
         }
     }
     
     enum DataState {
         case fetching
-        case loaded(meals: [Meal])
+        case loaded(meal: Meal)
         case error(error: MealError)
     }
 }
