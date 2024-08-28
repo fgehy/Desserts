@@ -42,7 +42,21 @@ actor MealNetworkManager: MealNetworkService {
         
             return data
         } catch {
-            throw MealError.errorFetchingMeals
+            throw handleFetchError(error: error)
+        }
+    }
+    
+    private func handleFetchError(error: Error) -> Error {
+        print("Error: \(error.localizedDescription)")
+        
+        if let err = error as? URLError {
+            switch URLError.Code(rawValue: err.errorCode) {
+            case .notConnectedToInternet, .networkConnectionLost, .badServerResponse:
+                return MealError.noInternetConnection
+            default: return MealError.errorFetchingMeals
+            }
+        } else {
+            return error
         }
     }
     
