@@ -7,13 +7,16 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		0CD943762C7F819B0059EDEF /* DessertAppApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CD943752C7F819B0059EDEF /* DessertAppApp.swift */; };
+		0CD943762C7F819B0059EDEF /* DessertApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CD943752C7F819B0059EDEF /* DessertApp.swift */; };
 		0CD943782C7F819B0059EDEF /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CD943772C7F819B0059EDEF /* ContentView.swift */; };
 		0CD9437A2C7F819C0059EDEF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0CD943792C7F819C0059EDEF /* Assets.xcassets */; };
 		0CD9437D2C7F819C0059EDEF /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0CD9437C2C7F819C0059EDEF /* Preview Assets.xcassets */; };
 		0CD943872C7F819C0059EDEF /* DessertAppTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CD943862C7F819C0059EDEF /* DessertAppTests.swift */; };
 		0CD943912C7F819C0059EDEF /* DessertAppUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CD943902C7F819C0059EDEF /* DessertAppUITests.swift */; };
 		0CD943932C7F819C0059EDEF /* DessertAppUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CD943922C7F819C0059EDEF /* DessertAppUITestsLaunchTests.swift */; };
+		0CD943A42C7F83E30059EDEF /* DessertNetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CD943A32C7F83E30059EDEF /* DessertNetworkService.swift */; };
+		0CD943A72C7F841D0059EDEF /* DessertsDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CD943A62C7F841D0059EDEF /* DessertsDTO.swift */; };
+		0CD943AB2C7F85120059EDEF /* MealDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CD943AA2C7F85120059EDEF /* MealDTO.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -35,7 +38,7 @@
 
 /* Begin PBXFileReference section */
 		0CD943722C7F819B0059EDEF /* DessertApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DessertApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		0CD943752C7F819B0059EDEF /* DessertAppApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DessertAppApp.swift; sourceTree = "<group>"; };
+		0CD943752C7F819B0059EDEF /* DessertApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DessertApp.swift; sourceTree = "<group>"; };
 		0CD943772C7F819B0059EDEF /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		0CD943792C7F819C0059EDEF /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		0CD9437C2C7F819C0059EDEF /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
@@ -44,6 +47,9 @@
 		0CD9438C2C7F819C0059EDEF /* DessertAppUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DessertAppUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		0CD943902C7F819C0059EDEF /* DessertAppUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DessertAppUITests.swift; sourceTree = "<group>"; };
 		0CD943922C7F819C0059EDEF /* DessertAppUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DessertAppUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		0CD943A32C7F83E30059EDEF /* DessertNetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DessertNetworkService.swift; sourceTree = "<group>"; };
+		0CD943A62C7F841D0059EDEF /* DessertsDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DessertsDTO.swift; sourceTree = "<group>"; };
+		0CD943AA2C7F85120059EDEF /* MealDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MealDTO.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -94,7 +100,10 @@
 		0CD943742C7F819B0059EDEF /* DessertApp */ = {
 			isa = PBXGroup;
 			children = (
-				0CD943752C7F819B0059EDEF /* DessertAppApp.swift */,
+				0CD943A22C7F83B50059EDEF /* UI */,
+				0CD943A02C7F83870059EDEF /* Data Manager */,
+				0CD9439F2C7F83760059EDEF /* Network Manager */,
+				0CD943752C7F819B0059EDEF /* DessertApp.swift */,
 				0CD943772C7F819B0059EDEF /* ContentView.swift */,
 				0CD943792C7F819C0059EDEF /* Assets.xcassets */,
 				0CD9437B2C7F819C0059EDEF /* Preview Content */,
@@ -125,6 +134,38 @@
 				0CD943922C7F819C0059EDEF /* DessertAppUITestsLaunchTests.swift */,
 			);
 			path = DessertAppUITests;
+			sourceTree = "<group>";
+		};
+		0CD9439F2C7F83760059EDEF /* Network Manager */ = {
+			isa = PBXGroup;
+			children = (
+				0CD943A52C7F84110059EDEF /* DTOs */,
+				0CD943A32C7F83E30059EDEF /* DessertNetworkService.swift */,
+			);
+			path = "Network Manager";
+			sourceTree = "<group>";
+		};
+		0CD943A02C7F83870059EDEF /* Data Manager */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = "Data Manager";
+			sourceTree = "<group>";
+		};
+		0CD943A22C7F83B50059EDEF /* UI */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = UI;
+			sourceTree = "<group>";
+		};
+		0CD943A52C7F84110059EDEF /* DTOs */ = {
+			isa = PBXGroup;
+			children = (
+				0CD943A62C7F841D0059EDEF /* DessertsDTO.swift */,
+				0CD943AA2C7F85120059EDEF /* MealDTO.swift */,
+			);
+			path = DTOs;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -257,8 +298,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0CD943A72C7F841D0059EDEF /* DessertsDTO.swift in Sources */,
+				0CD943AB2C7F85120059EDEF /* MealDTO.swift in Sources */,
 				0CD943782C7F819B0059EDEF /* ContentView.swift in Sources */,
-				0CD943762C7F819B0059EDEF /* DessertAppApp.swift in Sources */,
+				0CD943A42C7F83E30059EDEF /* DessertNetworkService.swift in Sources */,
+				0CD943762C7F819B0059EDEF /* DessertApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
