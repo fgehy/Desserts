@@ -14,9 +14,11 @@
 		0CD943872C7F819C0059EDEF /* DessertAppTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CD943862C7F819C0059EDEF /* DessertAppTests.swift */; };
 		0CD943912C7F819C0059EDEF /* DessertAppUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CD943902C7F819C0059EDEF /* DessertAppUITests.swift */; };
 		0CD943932C7F819C0059EDEF /* DessertAppUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CD943922C7F819C0059EDEF /* DessertAppUITestsLaunchTests.swift */; };
-		0CD943A42C7F83E30059EDEF /* DessertNetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CD943A32C7F83E30059EDEF /* DessertNetworkService.swift */; };
-		0CD943A72C7F841D0059EDEF /* DessertsDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CD943A62C7F841D0059EDEF /* DessertsDTO.swift */; };
+		0CD943A42C7F83E30059EDEF /* MealNetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CD943A32C7F83E30059EDEF /* MealNetworkService.swift */; };
+		0CD943A72C7F841D0059EDEF /* MealsDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CD943A62C7F841D0059EDEF /* MealsDTO.swift */; };
 		0CD943AB2C7F85120059EDEF /* MealDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CD943AA2C7F85120059EDEF /* MealDTO.swift */; };
+		0CD943AF2C7F885E0059EDEF /* MealNetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CD943AE2C7F885E0059EDEF /* MealNetworkManager.swift */; };
+		0CD943B12C7F8A5B0059EDEF /* DessertError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CD943B02C7F8A5B0059EDEF /* DessertError.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -47,9 +49,11 @@
 		0CD9438C2C7F819C0059EDEF /* DessertAppUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DessertAppUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		0CD943902C7F819C0059EDEF /* DessertAppUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DessertAppUITests.swift; sourceTree = "<group>"; };
 		0CD943922C7F819C0059EDEF /* DessertAppUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DessertAppUITestsLaunchTests.swift; sourceTree = "<group>"; };
-		0CD943A32C7F83E30059EDEF /* DessertNetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DessertNetworkService.swift; sourceTree = "<group>"; };
-		0CD943A62C7F841D0059EDEF /* DessertsDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DessertsDTO.swift; sourceTree = "<group>"; };
+		0CD943A32C7F83E30059EDEF /* MealNetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MealNetworkService.swift; sourceTree = "<group>"; };
+		0CD943A62C7F841D0059EDEF /* MealsDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MealsDTO.swift; sourceTree = "<group>"; };
 		0CD943AA2C7F85120059EDEF /* MealDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MealDTO.swift; sourceTree = "<group>"; };
+		0CD943AE2C7F885E0059EDEF /* MealNetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MealNetworkManager.swift; sourceTree = "<group>"; };
+		0CD943B02C7F8A5B0059EDEF /* DessertError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DessertError.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -140,7 +144,9 @@
 			isa = PBXGroup;
 			children = (
 				0CD943A52C7F84110059EDEF /* DTOs */,
-				0CD943A32C7F83E30059EDEF /* DessertNetworkService.swift */,
+				0CD943A32C7F83E30059EDEF /* MealNetworkService.swift */,
+				0CD943AE2C7F885E0059EDEF /* MealNetworkManager.swift */,
+				0CD943B02C7F8A5B0059EDEF /* DessertError.swift */,
 			);
 			path = "Network Manager";
 			sourceTree = "<group>";
@@ -162,7 +168,7 @@
 		0CD943A52C7F84110059EDEF /* DTOs */ = {
 			isa = PBXGroup;
 			children = (
-				0CD943A62C7F841D0059EDEF /* DessertsDTO.swift */,
+				0CD943A62C7F841D0059EDEF /* MealsDTO.swift */,
 				0CD943AA2C7F85120059EDEF /* MealDTO.swift */,
 			);
 			path = DTOs;
@@ -298,10 +304,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				0CD943A72C7F841D0059EDEF /* DessertsDTO.swift in Sources */,
+				0CD943A72C7F841D0059EDEF /* MealsDTO.swift in Sources */,
+				0CD943B12C7F8A5B0059EDEF /* DessertError.swift in Sources */,
 				0CD943AB2C7F85120059EDEF /* MealDTO.swift in Sources */,
+				0CD943AF2C7F885E0059EDEF /* MealNetworkManager.swift in Sources */,
 				0CD943782C7F819B0059EDEF /* ContentView.swift in Sources */,
-				0CD943A42C7F83E30059EDEF /* DessertNetworkService.swift in Sources */,
+				0CD943A42C7F83E30059EDEF /* MealNetworkService.swift in Sources */,
 				0CD943762C7F819B0059EDEF /* DessertApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
