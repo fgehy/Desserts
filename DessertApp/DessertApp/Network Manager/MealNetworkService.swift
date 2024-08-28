@@ -8,5 +8,6 @@
 import Foundation
 
 protocol MealNetworkService {    
-    func getMeal(id: String?) async throws -> MealsDTO
+    func getMeals(category: String) async throws -> MealsDTO
+    func getMeal(id: String) async throws -> MealsDTO
 }

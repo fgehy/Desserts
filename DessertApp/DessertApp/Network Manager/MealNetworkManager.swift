@@ -14,8 +14,18 @@ actor MealNetworkManager: MealNetworkService {
         self.endpoint = endpoint
     }
     
-    func getMeal(id: String? = nil) async throws -> MealsDTO {
-        guard let url = URL(string: endpoint) else { throw DessertError.invalidURL }
+    func getMeals(category: String) async throws -> MealsDTO {
+        let categoryEndpoint = endpoint + "/filter.php?c=\(category)"
+        guard let url = URL(string: categoryEndpoint) else { throw MealError.invalidURL }
+        
+        let data = try await fetchData(for: url)
+        return try getDTO(type: MealsDTO.self, data: data)
+    }
+    
+    func getMeal(id: String) async throws -> MealsDTO {
+        let detailEndpoint = endpoint + "/lookup.php?i=\(id)"
+        guard let url = URL(string: detailEndpoint) else { throw MealError.invalidURL }
+        
         let data = try await fetchData(for: url)
         return try getDTO(type: MealsDTO.self, data: data)
     }
@@ -27,12 +37,12 @@ actor MealNetworkManager: MealNetworkService {
             let (data, response) = try await URLSession.shared.data(for: request)
             
             guard let response = response as? HTTPURLResponse, response.statusCode != 404 else {
-                throw DessertError.unknownMeal
+                throw MealError.unknownMeal
             }
         
             return data
         } catch {
-            throw DessertError.errorFetchingMeals
+            throw MealError.errorFetchingMeals
         }
     }
     
@@ -41,7 +51,7 @@ actor MealNetworkManager: MealNetworkService {
             let dto = try JSONDecoder().decode(T.self, from: data)
             return dto
         } catch {
-            throw DessertError.errorDecodingMeals
+            throw MealError.errorDecodingMeals
         }
     }
 }
