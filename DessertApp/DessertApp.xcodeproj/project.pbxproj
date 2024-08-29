@@ -12,10 +12,11 @@
 		0CC7BA982C80DF6400948248 /* NetworkManagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CC7BA972C80DF6400948248 /* NetworkManagerTests.swift */; };
 		0CC7BA9A2C80E54B00948248 /* MealsDTO.json in Resources */ = {isa = PBXBuildFile; fileRef = 0CC7BA992C80E54B00948248 /* MealsDTO.json */; };
 		0CC7BA9C2C80E6F200948248 /* MealDTO_Apaim_Balik.json in Resources */ = {isa = PBXBuildFile; fileRef = 0CC7BA9B2C80E6F200948248 /* MealDTO_Apaim_Balik.json */; };
+		0CC7BA9E2C80F27F00948248 /* MealListViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CC7BA9D2C80F27F00948248 /* MealListViewModelTests.swift */; };
+		0CC7BAA02C80F52100948248 /* MealDetailViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CC7BA9F2C80F52100948248 /* MealDetailViewModelTests.swift */; };
 		0CD943762C7F819B0059EDEF /* DessertApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CD943752C7F819B0059EDEF /* DessertApp.swift */; };
 		0CD9437A2C7F819C0059EDEF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0CD943792C7F819C0059EDEF /* Assets.xcassets */; };
 		0CD9437D2C7F819C0059EDEF /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0CD9437C2C7F819C0059EDEF /* Preview Assets.xcassets */; };
-		0CD943872C7F819C0059EDEF /* DessertAppTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CD943862C7F819C0059EDEF /* DessertAppTests.swift */; };
 		0CD943912C7F819C0059EDEF /* DessertAppUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CD943902C7F819C0059EDEF /* DessertAppUITests.swift */; };
 		0CD943932C7F819C0059EDEF /* DessertAppUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CD943922C7F819C0059EDEF /* DessertAppUITestsLaunchTests.swift */; };
 		0CD943A42C7F83E30059EDEF /* MealNetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CD943A32C7F83E30059EDEF /* MealNetworkService.swift */; };
@@ -63,12 +64,13 @@
 		0CC7BA972C80DF6400948248 /* NetworkManagerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManagerTests.swift; sourceTree = "<group>"; };
 		0CC7BA992C80E54B00948248 /* MealsDTO.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = MealsDTO.json; sourceTree = "<group>"; };
 		0CC7BA9B2C80E6F200948248 /* MealDTO_Apaim_Balik.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = MealDTO_Apaim_Balik.json; sourceTree = "<group>"; };
+		0CC7BA9D2C80F27F00948248 /* MealListViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MealListViewModelTests.swift; sourceTree = "<group>"; };
+		0CC7BA9F2C80F52100948248 /* MealDetailViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MealDetailViewModelTests.swift; sourceTree = "<group>"; };
 		0CD943722C7F819B0059EDEF /* DessertApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DessertApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0CD943752C7F819B0059EDEF /* DessertApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DessertApp.swift; sourceTree = "<group>"; };
 		0CD943792C7F819C0059EDEF /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		0CD9437C2C7F819C0059EDEF /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		0CD943822C7F819C0059EDEF /* DessertAppTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DessertAppTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		0CD943862C7F819C0059EDEF /* DessertAppTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DessertAppTests.swift; sourceTree = "<group>"; };
 		0CD9438C2C7F819C0059EDEF /* DessertAppUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DessertAppUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		0CD943902C7F819C0059EDEF /* DessertAppUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DessertAppUITests.swift; sourceTree = "<group>"; };
 		0CD943922C7F819C0059EDEF /* DessertAppUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DessertAppUITestsLaunchTests.swift; sourceTree = "<group>"; };
@@ -174,9 +176,10 @@
 		0CD943852C7F819C0059EDEF /* DessertAppTests */ = {
 			isa = PBXGroup;
 			children = (
-				0CD943862C7F819C0059EDEF /* DessertAppTests.swift */,
 				0CC7BA952C80DBEF00948248 /* DataManagerTests.swift */,
 				0CC7BA972C80DF6400948248 /* NetworkManagerTests.swift */,
+				0CC7BA9D2C80F27F00948248 /* MealListViewModelTests.swift */,
+				0CC7BA9F2C80F52100948248 /* MealDetailViewModelTests.swift */,
 			);
 			path = DessertAppTests;
 			sourceTree = "<group>";
@@ -433,8 +436,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				0CC7BA982C80DF6400948248 /* NetworkManagerTests.swift in Sources */,
+				0CC7BA9E2C80F27F00948248 /* MealListViewModelTests.swift in Sources */,
+				0CC7BAA02C80F52100948248 /* MealDetailViewModelTests.swift in Sources */,
 				0CC7BA962C80DBEF00948248 /* DataManagerTests.swift in Sources */,
-				0CD943872C7F819C0059EDEF /* DessertAppTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
