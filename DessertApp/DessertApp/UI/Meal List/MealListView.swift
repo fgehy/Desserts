@@ -24,7 +24,7 @@ struct MealListView: View {
                     List {
                         ForEach(meals) { meal in
                             NavigationLink(value: meal) {
-                                MealListRow(name: meal.name, thumbnail: meal.thumbNail)
+                                MealListRow(name: meal.name.capitalized, thumbnail: meal.thumbNail)
                             }
                         }
                     }

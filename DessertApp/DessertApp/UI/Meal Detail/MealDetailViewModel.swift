@@ -24,7 +24,12 @@ final class MealDetailViewModel: ObservableObject {
         
         do {
             let meal = try await dataManager.getMealDetails(id: mealId)
-            state = .loaded(meal: meal)
+            let mealWithSortedIngredients = Meal(id: meal.id,
+                                                 name: meal.name,
+                                                 thumbNail: meal.thumbNail,
+                                                 instructions: meal.instructions,
+                                                 ingredients: meal.ingredients?.sorted(by: {$0.name < $1.name }))
+            state = .loaded(meal: mealWithSortedIngredients)
         } catch {
             if let err = error as? MealError {
                 state = .error(error: err)
