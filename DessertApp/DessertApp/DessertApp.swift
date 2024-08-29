@@ -12,10 +12,10 @@ struct DessertApp: App {
     let endpoint = Bundle.main.object(forInfoDictionaryKey: "Endpoint") as? String
     var body: some Scene {
         WindowGroup {
-            let networkManager = MealNetworkManager(endpoint: endpoint ?? "", useLocalResource: false)
-            let dataManager = MealDataManager(networkManager: networkManager)
-            let viewModel = MealListViewModel(dataManager: dataManager)
-            MealListView(viewModel: viewModel)
+            let networkManager = RecipeNetworkManager(endpoint: endpoint ?? "", useLocalResource: false)
+            let dataManager = RecipeDataManager(networkManager: networkManager)
+            let viewModel = RecipeListViewModel(dataManager: dataManager)
+            RecipeListView(viewModel: viewModel)
         }
     }
 }

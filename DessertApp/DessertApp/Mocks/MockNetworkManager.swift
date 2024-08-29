@@ -7,7 +7,7 @@
 
 import Foundation
 
-final class MockNetworkManager: MealNetworkService {
+final class MockNetworkManager: RecipeNetworkService {
     var endpoint: String
     
     private var mealsDTO: MealsDTO?
@@ -17,13 +17,13 @@ final class MockNetworkManager: MealNetworkService {
         self.mealsDTO = mealsDTO
     }
     
-    func getMeals(category: String) async throws -> MealsDTO {
-        guard let mealsDTO else { throw MealError.errorFetchingMeals }
+    func getRecipes(category: String) async throws -> MealsDTO {
+        guard let mealsDTO else { throw RecipeError.errorFetchingRecipes }
         return mealsDTO
     }
     
-    func getMeal(id: String) async throws -> MealsDTO {
-        guard let mealsDTO else { throw MealError.errorFetchingMeals }
+    func getRecipe(id: String) async throws -> MealsDTO {
+        guard let mealsDTO else { throw RecipeError.errorFetchingRecipes }
         return mealsDTO
     }
 }

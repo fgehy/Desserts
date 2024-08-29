@@ -1,5 +1,5 @@
 //
-//  Meal.swift
+//  Recipe.swift
 //  DessertApp
 //
 //  Created by Fabrice Gehy on 8/28/24.
@@ -7,8 +7,8 @@
 
 import Foundation
 
-
-struct Meal {
+/// Defines a single recipe
+struct Recipe {
     let id: String
     let name: String
     let thumbNail: String
@@ -17,8 +17,8 @@ struct Meal {
     let ingredients: [Ingredient]?
 }
 
-extension Meal: Hashable, Identifiable {
-    static func == (lhs: Meal, rhs: Meal) -> Bool {
+extension Recipe: Hashable, Identifiable {
+    static func == (lhs: Recipe, rhs: Recipe) -> Bool {
         lhs.id == rhs.id
     }
 }

@@ -1,5 +1,5 @@
 //
-//  MealListRow.swift
+//  RecipeListRow.swift
 //  DessertApp
 //
 //  Created by Fabrice Gehy on 8/28/24.
@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct MealListRow: View {
+struct RecipeListRow: View {
     let name: String
     let thumbnail: String
     
@@ -35,13 +35,13 @@ struct MealListRow: View {
 
 #Preview("Downloaded image") {
     
-    MealListRow(name: "Apam balik", 
+    RecipeListRow(name: "Apam balik", 
                 thumbnail: "https://www.themealdb.com/images/media/meals/adxcbq1619787919.jpg")
     
     
 }
 
 #Preview("Image placeholder") {
-    MealListRow(name: "Apam balik",
+    RecipeListRow(name: "Apam balik",
                 thumbnail: "")
 }

@@ -1,5 +1,5 @@
 //
-//  MealDetailImageView.swift
+//  RecipeDetailImageView.swift
 //  DessertApp
 //
 //  Created by Fabrice Gehy on 8/28/24.
@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct MealDetailImageView: View {
+struct RecipeDetailImageView: View {
     let name: String
     let thumbnail: String
     
@@ -34,6 +34,6 @@ struct MealDetailImageView: View {
 }
 
 #Preview {
-    MealDetailImageView(name: "Apam balik",
+    RecipeDetailImageView(name: "Apam balik",
                         thumbnail: "https://www.themealdb.com/images/media/meals/adxcbq1619787919.jpg")
 }

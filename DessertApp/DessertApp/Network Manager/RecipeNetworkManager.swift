@@ -1,5 +1,5 @@
 //
-//  DessertDataManager.swift
+//  RecipeNetworkManager.swift
 //  DessertApp
 //
 //  Created by Fabrice Gehy on 8/28/24.
@@ -7,8 +7,8 @@
 
 import Foundation
 
-actor MealNetworkManager: MealNetworkService {
-    
+/// Handles all actions needed to obtain recipe data from a remote source
+actor RecipeNetworkManager: RecipeNetworkService {
     nonisolated var endpoint: String {
         endpointValue
     }
@@ -22,20 +22,26 @@ actor MealNetworkManager: MealNetworkService {
         self.useLocalResource = useLocalResource
     }
     
-    func getMeals(category: String) async throws -> MealsDTO {
+    /// Handles the fetching of all recipes for a selected filter from a remote source
+    /// - Parameter category: the recipe type to fetch
+    /// - Returns: Data transfer object of a recipe list
+    func getRecipes(category: String) async throws -> MealsDTO {
         guard useLocalResource else {
             let categoryEndpoint = endpoint + "/filter.php?c=\(category)"
-            guard let url = URL(string: categoryEndpoint) else { throw handleFetchError(error: MealError.invalidURL) }
+            guard let url = URL(string: categoryEndpoint) else { throw handleFetchError(error: RecipeError.invalidURL) }
             let data = try await fetchData(for: url)
             return try getDTO(type: MealsDTO.self, data: data)
         }
         return try getDTO(type: MealsDTO.self, data: try getLocalResourceMeals())
     }
     
-    func getMeal(id: String) async throws -> MealsDTO {
+    /// Handles the fetching of details for a individual recipe from a remote source
+    /// - Parameter id: The id of the recipe to fetch
+    /// - Returns: Data transfer object of a recipe list containing one recipe (corresponding to the `id`) provided
+    func getRecipe(id: String) async throws -> MealsDTO {
         guard useLocalResource else {
             let detailEndpoint = endpoint + "/lookup.php?i=\(id)"
-            guard let url = URL(string: detailEndpoint) else { throw handleFetchError(error: MealError.invalidURL) }
+            guard let url = URL(string: detailEndpoint) else { throw handleFetchError(error: RecipeError.invalidURL) }
             
             let data = try await fetchData(for: url)
             return try getDTO(type: MealsDTO.self, data: data)
@@ -50,7 +56,7 @@ actor MealNetworkManager: MealNetworkService {
             let (data, response) = try await URLSession.shared.data(for: request)
             
             guard let response = response as? HTTPURLResponse, response.statusCode != 404 else {
-                throw handleFetchError(error: MealError.unknownMeal)
+                throw handleFetchError(error: RecipeError.unknownRecipe)
             }
         
             return data
@@ -60,20 +66,20 @@ actor MealNetworkManager: MealNetworkService {
     }
     
     private func handleFetchError(error: Error) -> Error {
-        if let err = error as? MealError {
+        if let err = error as? RecipeError {
             switch err {
             case .invalidURL:
-                print("MealError: Invalid URL")
-            case .errorFetchingMeals:
-                print("MealError: Could not fetch meals")
-            case .errorDecodingMeals:
-                print("MealError: Could not decode fetched meals")
-            case .unknownMeal:
-                print("MealError: Cound not find meal for selected id")
+                print("RecipeError: Invalid URL")
+            case .errorFetchingRecipes:
+                print("RecipeError: Could not fetch meals")
+            case .errorDecodingRecipes:
+                print("RecipeError: Could not decode fetched meals")
+            case .unknownRecipe:
+                print("RecipeError: Cound not find meal for selected id")
             case .noInternetConnection:
-                print("MealError: Not connected to the internet")
+                print("RecipeError: Not connected to the internet")
              default:
-                print("MealError: unknown")
+                print("RecipeError: unknown")
             }
         } else {
             print("Error: \(error.localizedDescription)")
@@ -83,8 +89,8 @@ actor MealNetworkManager: MealNetworkService {
         if let err = error as? URLError {
             switch URLError.Code(rawValue: err.errorCode) {
             case .notConnectedToInternet, .networkConnectionLost, .badServerResponse:
-                return handleFetchError(error: MealError.noInternetConnection)
-            default: return handleFetchError(error: MealError.errorFetchingMeals)
+                return handleFetchError(error: RecipeError.noInternetConnection)
+            default: return handleFetchError(error: RecipeError.errorFetchingRecipes)
             }
         } else {
             return error
@@ -96,17 +102,17 @@ actor MealNetworkManager: MealNetworkService {
             let dto = try JSONDecoder().decode(T.self, from: data)
             return dto
         } catch {
-            throw handleFetchError(error: MealError.errorDecodingMeals)
+            throw handleFetchError(error: RecipeError.errorDecodingRecipes)
         }
     }
     
     private func getLocalResourceMeals() throws -> Data {
-        guard let fileURL = Bundle.main.url(forResource: "MealsDTO", withExtension: "json") else { throw handleFetchError(error: MealError.errorFetchingMeals) }
+        guard let fileURL = Bundle.main.url(forResource: "MealsDTO", withExtension: "json") else { throw handleFetchError(error: RecipeError.errorFetchingRecipes) }
         return try Data(contentsOf: fileURL)
     }
     
     private func getLocalResourceMealDetails() throws -> Data {
-        guard let fileURL = Bundle.main.url(forResource: "MealDTO_Apaim_Balik", withExtension: "json") else { throw handleFetchError(error: MealError.errorFetchingMeals) }
+        guard let fileURL = Bundle.main.url(forResource: "MealDTO_Apaim_Balik", withExtension: "json") else { throw handleFetchError(error: RecipeError.errorFetchingRecipes) }
         return try Data(contentsOf: fileURL)
     }
 }

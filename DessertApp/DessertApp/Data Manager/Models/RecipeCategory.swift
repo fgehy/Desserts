@@ -1,5 +1,5 @@
 //
-//  MealCategory.swift
+//  RecipeCategory.swift
 //  DessertApp
 //
 //  Created by Fabrice Gehy on 8/28/24.
@@ -7,7 +7,8 @@
 
 import Foundation
 
-enum MealCategory {
+/// Defines the different types of recipes
+enum RecipeCategory {
     case beef
     case dessert
     case lamb

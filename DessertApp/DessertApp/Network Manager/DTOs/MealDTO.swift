@@ -7,6 +7,7 @@
 
 import Foundation
 
+/// Data transfer object from remote source for an individual meal
 struct MealDTO: Decodable {
     let idMeal: String
     let strMeal: String

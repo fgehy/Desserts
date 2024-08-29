@@ -11,10 +11,10 @@ import XCTest
 final class NetworkManagerTests: XCTestCase {
     func test_IssueMakingRemoteRequestForRecipeList_ShouldReceiveFailure() async throws {
         //Given
-        let networkManager = MealNetworkManager(endpoint: "", useLocalResource: false)
+        let networkManager = RecipeNetworkManager(endpoint: "", useLocalResource: false)
         
         //When
-        let data =  try? await networkManager.getMeals(category: "dessert")
+        let data =  try? await networkManager.getRecipes(category: "dessert")
         
         //Then
         XCTAssertNil(data)
@@ -22,10 +22,10 @@ final class NetworkManagerTests: XCTestCase {
     
     func test_IssueMakingRemoteRequestForReceipeDetail_ShouldReceiveFailure() async throws {
         //Given
-        let networkManager = MealNetworkManager(endpoint: "", useLocalResource: false)
+        let networkManager = RecipeNetworkManager(endpoint: "", useLocalResource: false)
         
         //When
-        let data = try? await networkManager.getMeal(id: "")
+        let data = try? await networkManager.getRecipe(id: "")
         
         //Then
         XCTAssertNil(data)
@@ -33,21 +33,21 @@ final class NetworkManagerTests: XCTestCase {
     
     func test_MakeRequestForRecipeList_ShouldReceive65Recipes() async throws {
         //Given
-        let networkManager = MealNetworkManager(endpoint: "", useLocalResource: true)
+        let networkManager = RecipeNetworkManager(endpoint: "", useLocalResource: true)
         
         //When
-        let data =  try await networkManager.getMeals(category: "dessert")
+        let data =  try await networkManager.getRecipes(category: "dessert")
         
         //Then
         XCTAssertEqual(data.meals.count, 65)
     }
     
-    func test_IssueMakingRemoteRequestForReceipeDetail_ShouldReceiveApaimBalikMeal() async throws {
+    func test_IssueMakingRemoteRequestForReceipeDetail_ShouldReceiveApaimBalikRecipe() async throws {
         //Given
-        let networkManager = MealNetworkManager(endpoint: "", useLocalResource: true)
+        let networkManager = RecipeNetworkManager(endpoint: "", useLocalResource: true)
         
         //When
-        let data = try await networkManager.getMeal(id: "")
+        let data = try await networkManager.getRecipe(id: "")
         
         //Then
         if let meal = data.meals.first {

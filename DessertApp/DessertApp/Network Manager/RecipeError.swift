@@ -1,5 +1,5 @@
 //
-//  MealError.swift
+//  RecipeError.swift
 //  DessertApp
 //
 //  Created by Fabrice Gehy on 8/28/24.
@@ -7,19 +7,20 @@
 
 import Foundation
 
-enum MealError: Error {
+/// Defines custom errors
+enum RecipeError: Error {
     case invalidURL
-    case errorFetchingMeals
-    case errorDecodingMeals
-    case unknownMeal
+    case errorFetchingRecipes
+    case errorDecodingRecipes
+    case unknownRecipe
     case other
     case noInternetConnection
 }
 
-extension MealError {
+extension RecipeError {
     var errorTitle: String {
         switch self {
-        case .errorFetchingMeals, .other, .invalidURL, .unknownMeal, .errorDecodingMeals:
+        case .errorFetchingRecipes, .other, .invalidURL, .unknownRecipe, .errorDecodingRecipes:
             return "Uh oh..looks like \n we overcooked this one."
         case .noInternetConnection:
             return "Uh oh..looks like we lost the connection."
@@ -29,7 +30,7 @@ extension MealError {
     
     var errorSubtitle: String {
         switch self {
-        case .errorFetchingMeals, .other, .invalidURL, .unknownMeal, .errorDecodingMeals:
+        case .errorFetchingRecipes, .other, .invalidURL, .unknownRecipe, .errorDecodingRecipes:
             return "There was an issue fetching the receipes. \n Please try again."
         case .noInternetConnection:
             return "You are not connected to the internet. Please reconnect and try again."

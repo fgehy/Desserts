@@ -1,5 +1,5 @@
 //
-//  MealListViewModelTests.swift
+//  RecipeListViewModelTests.swift
 //  DessertAppTests
 //
 //  Created by Fabrice Gehy on 8/29/24.
@@ -8,23 +8,23 @@
 import XCTest
 @testable import DessertApp
 
-final class MealListViewModelTests: XCTestCase {
+final class RecipeListViewModelTests: XCTestCase {
 
-    func test_FetchMeals_ShouldBeInLoadedState() async throws {
+    func test_FetchRecipes_ShouldBeInLoadedState() async throws {
         //Given
         let mockNetworkManager = MockNetworkManager(endpoint: "", mealsDTO: MealsDTO(meals: [Stubs.meal1DTO, Stubs.meal2DTO]))
-        let dataManager = MealDataManager(networkManager: mockNetworkManager)
-        let viewModel = MealListViewModel(dataManager: dataManager)
+        let dataManager = RecipeDataManager(networkManager: mockNetworkManager)
+        let viewModel = RecipeListViewModel(dataManager: dataManager)
         
         //When
-        await viewModel.fetchMeals()
+        await viewModel.fetchRecipes()
         
         //Then
-        var fetchedMeals: [Meal] = []
+        var fetchedRecipes: [Recipe] = []
         var isLoadedState: Bool {
             switch viewModel.state {
-            case .loaded(let meals):
-                fetchedMeals = meals
+            case .loaded(let recipes):
+                fetchedRecipes = recipes
                 return true
             default:
                 return false
@@ -32,17 +32,17 @@ final class MealListViewModelTests: XCTestCase {
         }
         
         XCTAssertTrue(isLoadedState)
-        XCTAssertEqual(fetchedMeals.count, 2)
+        XCTAssertEqual(fetchedRecipes.count, 2)
     }
 
-    func test_IssueFetchingMeals_ShouldBeInErrorState() async throws {
+    func test_IssueFetchingRecipes_ShouldBeInErrorState() async throws {
         //Given
         let mockNetworkManager = MockNetworkManager(endpoint: "", mealsDTO: nil)
-        let dataManager = MealDataManager(networkManager: mockNetworkManager)
-        let viewModel = MealListViewModel(dataManager: dataManager)
+        let dataManager = RecipeDataManager(networkManager: mockNetworkManager)
+        let viewModel = RecipeListViewModel(dataManager: dataManager)
         
         //When
-        await viewModel.fetchMeals()
+        await viewModel.fetchRecipes()
         
         //Then
         var isErrorState: Bool {

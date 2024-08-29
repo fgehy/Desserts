@@ -1,5 +1,5 @@
 //
-//  MealDataManager.swift
+//  RecipeDataManager.swift
 //  DessertApp
 //
 //  Created by Fabrice Gehy on 8/28/24.
@@ -7,33 +7,40 @@
 
 import Foundation
 
-actor MealDataManager: MealDataService {
-    let networkManager: MealNetworkService
+/// Handles the fetching of recipe data including converting models from a remote source into custom types
+actor RecipeDataManager: RecipeDataService {
+    let networkManager: RecipeNetworkService
     
-    init(networkManager: MealNetworkService) {
+    init(networkManager: RecipeNetworkService) {
         self.networkManager = networkManager
     }
     
-    func getMeals(category: MealCategory) async throws -> [Meal] {
-        let data = try await networkManager.getMeals(category: category.name)
-        let meals = data.meals.map { dto in
-            Meal(id: dto.idMeal,
+    /// Gets a list of recipes for the selected category
+    /// - Parameter category: category of recipe to fetch
+    /// - Returns: an array of Recipe objects for the provided category
+    func getRecipes(category: RecipeCategory) async throws -> [Recipe] {
+        let data = try await networkManager.getRecipes(category: category.name)
+        let recipes = data.meals.map { dto in
+            Recipe(id: dto.idMeal,
                  name: dto.strMeal,
                  thumbNail: dto.strMealThumb,
                  instructions: dto.strInstructions,
                  ingredients: getIngredients(meal: dto))
         }
         
-        return meals
+        return recipes
     }
     
-    func getMealDetails(id: String) async throws -> Meal {
-        guard let meal = try await networkManager.getMeal(id: id).meals.first else { throw MealError.unknownMeal }
-        return Meal(id: meal.idMeal,
-                    name: meal.strMeal,
-                    thumbNail: meal.strMealThumb,
-                    instructions: meal.strInstructions,
-                    ingredients: getIngredients(meal: meal))
+    /// Gets the details for a recipe
+    /// - Parameter id: the id of the recipe
+    /// - Returns: the Recipe object for the `id`
+    func getRecipeDetails(id: String) async throws -> Recipe {
+        guard let recipe = try await networkManager.getRecipe(id: id).meals.first else { throw RecipeError.unknownRecipe }
+        return Recipe(id: recipe.idMeal,
+                    name: recipe.strMeal,
+                    thumbNail: recipe.strMealThumb,
+                    instructions: recipe.strInstructions,
+                    ingredients: getIngredients(meal: recipe))
     }
     
     private func convertIngredient(name: String?, measurement: String?) -> Ingredient? {

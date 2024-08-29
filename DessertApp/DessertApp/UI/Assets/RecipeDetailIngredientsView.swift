@@ -1,5 +1,5 @@
 //
-//  MealDetailIngredientsView.swift
+//  RecipeDetailIngredientsView.swift
 //  DessertApp
 //
 //  Created by Fabrice Gehy on 8/28/24.
@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct MealDetailIngredientsView: View {
+struct RecipeDetailIngredientsView: View {
     let title: String
     let ingredients: [Ingredient]
     
@@ -33,7 +33,7 @@ struct MealDetailIngredientsView: View {
 }
 
 #Preview {
-    MealDetailIngredientsView(title: "Ingredients",
+    RecipeDetailIngredientsView(title: "Ingredients",
                               ingredients: [.init(name: "Milk", measurement: "200ml"),
                                             .init(name: "Oil", measurement: "60ml"),
                                             .init(name: "Eggs", measurement: "2"),

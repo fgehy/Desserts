@@ -1,5 +1,5 @@
 //
-//  MealDetailView.swift
+//  RecipeDetailView.swift
 //  DessertApp
 //
 //  Created by Fabrice Gehy on 8/28/24.
@@ -7,10 +7,11 @@
 
 import SwiftUI
 
-struct MealDetailView: View {
-    @StateObject private var viewModel: MealDetailViewModel
+/// Displays recipe details
+struct RecipeDetailView: View {
+    @StateObject private var viewModel: RecipeDetailViewModel
     
-    init(viewModel: MealDetailViewModel) {
+    init(viewModel: RecipeDetailViewModel) {
         _viewModel = .init(wrappedValue: viewModel)
     }
     
@@ -19,23 +20,23 @@ struct MealDetailView: View {
             switch viewModel.state {
             case .fetching:
                 LoadingView()
-            case .loaded(let meal):
+            case .loaded(let recipe):
                 ScrollView {
                     LazyVStack(alignment: .leading, spacing: 20) {
                         HStack {
                             Spacer()
-                            MealDetailImageView(name: meal.name,
-                                                thumbnail: meal.thumbNail)
+                            RecipeDetailImageView(name: recipe.name,
+                                                thumbnail: recipe.thumbNail)
                             Spacer()
                         }
                         
-                        if let ingredients = meal.ingredients {
-                            MealDetailIngredientsView(title: "Ingredients",
+                        if let ingredients = recipe.ingredients {
+                            RecipeDetailIngredientsView(title: "Ingredients",
                                                       ingredients: ingredients)
                         }
                         
-                        if let instructions = meal.instructions {
-                            MealDetailInstructionsView(title: "Instructions",
+                        if let instructions = recipe.instructions {
+                            RecipeDetailInstructionsView(title: "Instructions",
                                                        instructions: instructions)
                         }
                     }
@@ -62,8 +63,8 @@ struct MealDetailView: View {
 }
 
 #Preview {
-    let networkManager = MealNetworkManager(endpoint: "", useLocalResource: true)
-    let dataManager = MealDataManager(networkManager: networkManager)
+    let networkManager = RecipeNetworkManager(endpoint: "", useLocalResource: true)
+    let dataManager = RecipeDataManager(networkManager: networkManager)
     
-    return MealDetailView(viewModel: .init(dataManager: dataManager, mealId: "53049"))
+    return RecipeDetailView(viewModel: .init(dataManager: dataManager, recipeId: "53049"))
 }

@@ -7,6 +7,7 @@
 
 import Foundation
 
+/// Defines an ingredient for a recipe
 struct Ingredient {
     var id: String {
         UUID().uuidString

@@ -1,5 +1,5 @@
 //
-//  MealDetailViewModelTests.swift
+//  RecipeDetailViewModelTests.swift
 //  DessertAppTests
 //
 //  Created by Fabrice Gehy on 8/29/24.
@@ -8,13 +8,13 @@
 import XCTest
 @testable import DessertApp
 
-final class MealDetailViewModelTests: XCTestCase {
+final class RecipeDetailViewModelTests: XCTestCase {
 
-    func test_FetchMeal_ShouldBeInLoadedState() async throws {
+    func test_FetchRecipe_ShouldBeInLoadedState() async throws {
         //Given
         let mockNetworkManager = MockNetworkManager(endpoint: "", mealsDTO: MealsDTO(meals: [Stubs.meal1DTO]))
-        let dataManager = MealDataManager(networkManager: mockNetworkManager)
-        let viewModel = MealDetailViewModel(dataManager: dataManager, mealId: "")
+        let dataManager = RecipeDataManager(networkManager: mockNetworkManager)
+        let viewModel = RecipeDetailViewModel(dataManager: dataManager, recipeId: "")
         
         //When
         await viewModel.fetchDetails()
@@ -31,11 +31,11 @@ final class MealDetailViewModelTests: XCTestCase {
         XCTAssertTrue(isLoadedState)
     }
 
-    func test_IssueFetchingMeal_ShouldBeInErrorState() async throws {
+    func test_IssueFetchingRecipe_ShouldBeInErrorState() async throws {
         //Given
         let mockNetworkManager = MockNetworkManager(endpoint: "", mealsDTO: nil)
-        let dataManager = MealDataManager(networkManager: mockNetworkManager)
-        let viewModel = MealDetailViewModel(dataManager: dataManager, mealId: "")
+        let dataManager = RecipeDataManager(networkManager: mockNetworkManager)
+        let viewModel = RecipeDetailViewModel(dataManager: dataManager, recipeId: "")
         
         //When
         await viewModel.fetchDetails()
