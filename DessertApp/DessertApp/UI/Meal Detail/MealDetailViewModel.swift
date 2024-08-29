@@ -25,7 +25,7 @@ final class MealDetailViewModel: ObservableObject {
         do {
             let meal = try await dataManager.getMealDetails(id: mealId)
             let mealWithSortedIngredients = Meal(id: meal.id,
-                                                 name: meal.name,
+                                                 name: meal.name.capitalized,
                                                  thumbNail: meal.thumbNail,
                                                  instructions: meal.instructions,
                                                  ingredients: meal.ingredients?.sorted(by: {$0.name < $1.name }))

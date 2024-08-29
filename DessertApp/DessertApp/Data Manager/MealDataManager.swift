@@ -42,20 +42,11 @@ actor MealDataManager: MealDataService {
                 return .init(name: name.capitalized, measurement: measurement)
             }
         }
-        
         return nil
     }
     
-    private func addToIngredientArray(name: String?, measurement: String?) {
-        if let name, let measurement {
-            if let ingredient = convertIngredient(name: name, measurement: measurement) {
-                
-            }
-        }
-    }
-    
     private func getIngredients(meal: MealDTO) -> [Ingredient] {
-        //Note: I decided to use a tuple instead of a dictionary because some reciples have more than 1 of the same ingredient (i.e. butter for Apple & Blackberry Crumble). Because of this, the key would overwrite itself. I made the assumption we want to display all ingredients provided by the source of truth so decided to use a tuple to accomplish this instead.
+        //Note: I decided to use a tuple instead of a dictionary because some recipes have more than 1 of the same ingredient (e.g. butter for Apple & Blackberry Crumble). Because of this, the key/value would overwrite itself when using a dictionary and only 1 would display. I made the assumption we want to display all ingredients provided by the source of truth since there are occurences where same ingredient has different measurements. A source of truth/back-end update to the ingredients DTO would fix this without requiring an app update.
         var ingredientsTuple: [(String?, String?)] = []
         ingredientsTuple.append((meal.strIngredient1, meal.strMeasure1))
         ingredientsTuple.append((meal.strIngredient2, meal.strMeasure2))
