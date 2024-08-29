@@ -66,6 +66,7 @@
 		0CC7BA9B2C80E6F200948248 /* MealDTO_Apaim_Balik.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = MealDTO_Apaim_Balik.json; sourceTree = "<group>"; };
 		0CC7BA9D2C80F27F00948248 /* MealListViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MealListViewModelTests.swift; sourceTree = "<group>"; };
 		0CC7BA9F2C80F52100948248 /* MealDetailViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MealDetailViewModelTests.swift; sourceTree = "<group>"; };
+		0CC7BAA12C80F6B600948248 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		0CD943722C7F819B0059EDEF /* DessertApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DessertApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0CD943752C7F819B0059EDEF /* DessertApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DessertApp.swift; sourceTree = "<group>"; };
 		0CD943792C7F819C0059EDEF /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -154,6 +155,7 @@
 		0CD943742C7F819B0059EDEF /* DessertApp */ = {
 			isa = PBXGroup;
 			children = (
+				0CC7BAA12C80F6B600948248 /* Info.plist */,
 				0CD943752C7F819B0059EDEF /* DessertApp.swift */,
 				0CC7BA922C80CDB100948248 /* Mocks */,
 				0CD943A22C7F83B50059EDEF /* UI */,
@@ -597,6 +599,7 @@
 				DEVELOPMENT_TEAM = MGU73MA974;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = DessertApp/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -626,6 +629,7 @@
 				DEVELOPMENT_TEAM = MGU73MA974;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = DessertApp/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;

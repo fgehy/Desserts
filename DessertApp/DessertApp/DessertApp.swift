@@ -9,10 +9,10 @@ import SwiftUI
 
 @main
 struct DessertApp: App {
+    let endpoint = Bundle.main.object(forInfoDictionaryKey: "Endpoint") as? String
     var body: some Scene {
         WindowGroup {
-            //TODO: Move endpoint to plist
-            let networkManager = MealNetworkManager(endpoint: "https://themealdb.com/api/json/v1/1", useLocalResource: false)
+            let networkManager = MealNetworkManager(endpoint: endpoint ?? "", useLocalResource: false)
             let dataManager = MealDataManager(networkManager: networkManager)
             let viewModel = MealListViewModel(dataManager: dataManager)
             MealListView(viewModel: viewModel)
