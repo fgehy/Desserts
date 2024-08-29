@@ -22,7 +22,7 @@ final class MockNetworkManager: RecipeNetworkService {
         return mealsDTO
     }
     
-    func getRecipe(id: String) async throws -> MealsDTO {
+    func getRecipeDetails(id: String) async throws -> MealsDTO {
         guard let mealsDTO else { throw RecipeError.errorFetchingRecipes }
         return mealsDTO
     }

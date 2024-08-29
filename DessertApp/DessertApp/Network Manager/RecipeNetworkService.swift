@@ -11,5 +11,5 @@ import Foundation
 protocol RecipeNetworkService {
     var endpoint: String { get }
     func getRecipes(category: String) async throws -> MealsDTO
-    func getRecipe(id: String) async throws -> MealsDTO
+    func getRecipeDetails(id: String) async throws -> MealsDTO
 }

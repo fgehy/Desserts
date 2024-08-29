@@ -38,7 +38,7 @@ actor RecipeNetworkManager: RecipeNetworkService {
     /// Handles the fetching of details for a individual recipe from a remote source
     /// - Parameter id: The id of the recipe to fetch
     /// - Returns: Data transfer object of a recipe list containing one recipe (corresponding to the `id`) provided
-    func getRecipe(id: String) async throws -> MealsDTO {
+    func getRecipeDetails(id: String) async throws -> MealsDTO {
         guard useLocalResource else {
             let detailEndpoint = endpoint + "/lookup.php?i=\(id)"
             guard let url = URL(string: detailEndpoint) else { throw handleFetchError(error: RecipeError.invalidURL) }

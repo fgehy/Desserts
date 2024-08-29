@@ -35,7 +35,7 @@ actor RecipeDataManager: RecipeDataService {
     /// - Parameter id: the id of the recipe
     /// - Returns: the Recipe object for the `id`
     func getRecipeDetails(id: String) async throws -> Recipe {
-        guard let recipe = try await networkManager.getRecipe(id: id).meals.first else { throw RecipeError.unknownRecipe }
+        guard let recipe = try await networkManager.getRecipeDetails(id: id).meals.first else { throw RecipeError.unknownRecipe }
         return Recipe(id: recipe.idMeal,
                     name: recipe.strMeal,
                     thumbNail: recipe.strMealThumb,

@@ -25,7 +25,7 @@ final class NetworkManagerTests: XCTestCase {
         let networkManager = RecipeNetworkManager(endpoint: "", useLocalResource: false)
         
         //When
-        let data = try? await networkManager.getRecipe(id: "")
+        let data = try? await networkManager.getRecipeDetails(id: "")
         
         //Then
         XCTAssertNil(data)
@@ -47,7 +47,7 @@ final class NetworkManagerTests: XCTestCase {
         let networkManager = RecipeNetworkManager(endpoint: "", useLocalResource: true)
         
         //When
-        let data = try await networkManager.getRecipe(id: "")
+        let data = try await networkManager.getRecipeDetails(id: "")
         
         //Then
         if let meal = data.meals.first {
