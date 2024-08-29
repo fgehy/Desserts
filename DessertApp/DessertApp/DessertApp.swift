@@ -12,7 +12,7 @@ struct DessertApp: App {
     var body: some Scene {
         WindowGroup {
             //TODO: Move endpoint to plist
-            let networkManager = MealNetworkManager(endpoint: "https://themealdb.com/api/json/v1/1")
+            let networkManager = MealNetworkManager(endpoint: "https://themealdb.com/api/json/v1/1", useLocalResource: false)
             let dataManager = MealDataManager(networkManager: networkManager)
             let viewModel = MealListViewModel(dataManager: dataManager)
             MealListView(viewModel: viewModel)

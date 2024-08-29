@@ -7,7 +7,8 @@
 
 import Foundation
 
-protocol MealNetworkService {    
+protocol MealNetworkService {  
+    var endpoint: String { get }
     func getMeals(category: String) async throws -> MealsDTO
     func getMeal(id: String) async throws -> MealsDTO
 }

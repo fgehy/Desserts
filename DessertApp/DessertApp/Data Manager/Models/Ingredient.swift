@@ -9,7 +9,7 @@ import Foundation
 
 struct Ingredient {
     var id: String {
-        name
+        UUID().uuidString
     }
     
     let name: String

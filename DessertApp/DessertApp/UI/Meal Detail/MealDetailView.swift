@@ -62,8 +62,7 @@ struct MealDetailView: View {
 }
 
 #Preview {
-    //TODO: Create mock manager and pass it in there
-    let networkManager = MealNetworkManager(endpoint: "https://themealdb.com/api/json/v1/1")
+    let networkManager = MealNetworkManager(endpoint: "", useLocalResource: true)
     let dataManager = MealDataManager(networkManager: networkManager)
     
     return MealDetailView(viewModel: .init(dataManager: dataManager, mealId: "53049"))
