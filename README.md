@@ -1,7 +1,7 @@
 #  Dessert/Recipe App by Fabrice Gehy
 
 ## App Overview
-The app was built with Xcode 15.4. To build the app, pull the `main` branch and run the project. Note: In a work environment, this work would've been separated into multiple branches/PRs. I elected to do this all in one branch & one PR since I'm the only one reviewing the work for this assignment.
+The app was built with Xcode 15.4. To build the app, pull the `main` branch and run the project.
 
 This app displays a list of desserts from https://themealdb.com/api.php. Upon opening the app, all desserts will be downloaded and displayed. Tapping a recipe on the list will lead you to a screen to view additional details for the selected recipe. 
 
