@@ -46,115 +46,44 @@ actor MealDataManager: MealDataService {
         return nil
     }
     
+    private func addToIngredientArray(name: String?, measurement: String?) {
+        if let name, let measurement {
+            if let ingredient = convertIngredient(name: name, measurement: measurement) {
+                
+            }
+        }
+    }
+    
     private func getIngredients(meal: MealDTO) -> [Ingredient] {
-        //TODO: Redo ingredient conversion
-        let ingredients: [Ingredient] = {
-            var array: [Ingredient] = []
-            
-            if let name = meal.strIngredient1, let measurement = meal.strMeasure1 {
-                if let ingredient = convertIngredient(name: name, measurement: measurement) {
-                    array.append(ingredient)
-                }
-            }
-            if let name = meal.strIngredient2, let measurement = meal.strMeasure2 {
-                if let ingredient = convertIngredient(name: name, measurement: measurement) {
-                    array.append(ingredient)
-                }
-            }
-            if let name = meal.strIngredient3, let measurement = meal.strMeasure3 {
-                if let ingredient = convertIngredient(name: name, measurement: measurement) {
-                    array.append(ingredient)
-                }
-            }
-            if let name = meal.strIngredient4, let measurement = meal.strMeasure4 {
-                if let ingredient = convertIngredient(name: name, measurement: measurement) {
-                    array.append(ingredient)
-                }
-            }
-            if let name = meal.strIngredient5, let measurement = meal.strMeasure5 {
-                if let ingredient = convertIngredient(name: name, measurement: measurement) {
-                    array.append(ingredient)
-                }
-            }
-            if let name = meal.strIngredient6, let measurement = meal.strMeasure6 {
-                if let ingredient = convertIngredient(name: name, measurement: measurement) {
-                    array.append(ingredient)
-                }
-            }
-            if let name = meal.strIngredient7, let measurement = meal.strMeasure7 {
-                if let ingredient = convertIngredient(name: name, measurement: measurement) {
-                    array.append(ingredient)
-                }
-            }
-            if let name = meal.strIngredient8, let measurement = meal.strMeasure8 {
-                if let ingredient = convertIngredient(name: name, measurement: measurement) {
-                    array.append(ingredient)
-                }
-            }
-            if let name = meal.strIngredient9, let measurement = meal.strMeasure9 {
-                if let ingredient = convertIngredient(name: name, measurement: measurement) {
-                    array.append(ingredient)
-                }
-            }
-            if let name = meal.strIngredient10, let measurement = meal.strMeasure10 {
-                if let ingredient = convertIngredient(name: name, measurement: measurement) {
-                    array.append(ingredient)
-                }
-            }
-            if let name = meal.strIngredient11, let measurement = meal.strMeasure11 {
-                if let ingredient = convertIngredient(name: name, measurement: measurement) {
-                    array.append(ingredient)
-                }
-            }
-            if let name = meal.strIngredient12, let measurement = meal.strMeasure12 {
-                if let ingredient = convertIngredient(name: name, measurement: measurement) {
-                    array.append(ingredient)
-                }
-            }
-            if let name = meal.strIngredient13, let measurement = meal.strMeasure13 {
-                if let ingredient = convertIngredient(name: name, measurement: measurement) {
-                    array.append(ingredient)
-                }
-            }
-            if let name = meal.strIngredient14, let measurement = meal.strMeasure14 {
-                if let ingredient = convertIngredient(name: name, measurement: measurement) {
-                    array.append(ingredient)
-                }
-            }
-            if let name = meal.strIngredient15, let measurement = meal.strMeasure15 {
-                if let ingredient = convertIngredient(name: name, measurement: measurement) {
-                    array.append(ingredient)
-                }
-            }
-            if let name = meal.strIngredient16, let measurement = meal.strMeasure16 {
-                if let ingredient = convertIngredient(name: name, measurement: measurement) {
-                    array.append(ingredient)
-                }
-            }
-            if let name = meal.strIngredient17, let measurement = meal.strMeasure17 {
-                if let ingredient = convertIngredient(name: name, measurement: measurement) {
-                    array.append(ingredient)
-                }
-            }
-            if let name = meal.strIngredient18, let measurement = meal.strMeasure18 {
-                if let ingredient = convertIngredient(name: name, measurement: measurement) {
-                    array.append(ingredient)
-                }
-            }
-            if let name = meal.strIngredient19, let measurement = meal.strMeasure19 {
-                if let ingredient = convertIngredient(name: name, measurement: measurement) {
-                    array.append(ingredient)
-                }
-            }
-            if let name = meal.strIngredient20, let measurement = meal.strMeasure20 {
-                if let ingredient = convertIngredient(name: name, measurement: measurement) {
-                    array.append(ingredient)
-                }
-            }
-            
-            return array
-        }()
+        //Note: I decided to use a tuple instead of a dictionary because some reciples have more than 1 of the same ingredient (i.e. butter for Apple & Blackberry Crumble). Because of this, the key would overwrite itself. I made the assumption we want to display all ingredients provided by the source of truth so decided to use a tuple to accomplish this instead.
+        var ingredientsTuple: [(String?, String?)] = []
+        ingredientsTuple.append((meal.strIngredient1, meal.strMeasure1))
+        ingredientsTuple.append((meal.strIngredient2, meal.strMeasure2))
+        ingredientsTuple.append((meal.strIngredient3, meal.strMeasure3))
+        ingredientsTuple.append((meal.strIngredient4, meal.strMeasure4))
+        ingredientsTuple.append((meal.strIngredient5, meal.strMeasure5))
+        ingredientsTuple.append((meal.strIngredient6, meal.strMeasure6))
+        ingredientsTuple.append((meal.strIngredient7, meal.strMeasure7))
+        ingredientsTuple.append((meal.strIngredient8, meal.strMeasure8))
+        ingredientsTuple.append((meal.strIngredient9, meal.strMeasure9))
+        ingredientsTuple.append((meal.strIngredient10, meal.strMeasure10))
+        ingredientsTuple.append((meal.strIngredient11, meal.strMeasure11))
+        ingredientsTuple.append((meal.strIngredient12, meal.strMeasure12))
+        ingredientsTuple.append((meal.strIngredient13, meal.strMeasure13))
+        ingredientsTuple.append((meal.strIngredient14, meal.strMeasure14))
+        ingredientsTuple.append((meal.strIngredient15, meal.strMeasure15))
+        ingredientsTuple.append((meal.strIngredient16, meal.strMeasure16))
+        ingredientsTuple.append((meal.strIngredient17, meal.strMeasure17))
+        ingredientsTuple.append((meal.strIngredient18, meal.strMeasure18))
+        ingredientsTuple.append((meal.strIngredient19, meal.strMeasure19))
+        ingredientsTuple.append((meal.strIngredient20, meal.strMeasure20))
         
+        var ingredients: [Ingredient] = []
+        for (name, measurement) in ingredientsTuple {
+            if let ingredient = convertIngredient(name: name, measurement: measurement) {
+                ingredients.append(ingredient)
+            }
+        }
         return ingredients
     }
 }
