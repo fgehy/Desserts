@@ -89,8 +89,8 @@ actor RecipeNetworkManager: RecipeNetworkService {
         if let err = error as? URLError {
             switch URLError.Code(rawValue: err.errorCode) {
             case .notConnectedToInternet, .networkConnectionLost, .badServerResponse:
-                return handleFetchError(error: RecipeError.noInternetConnection)
-            default: return handleFetchError(error: RecipeError.errorFetchingRecipes)
+                return RecipeError.noInternetConnection
+            default: return RecipeError.errorFetchingRecipes
             }
         } else {
             return error
