@@ -20,7 +20,8 @@ actor RecipeDataManager: RecipeDataService {
     /// - Returns: an array of Recipe objects for the provided category
     func getRecipes(category: RecipeCategory) async throws -> [Recipe] {
         let data = try await networkManager.getRecipes(category: category.name)
-        let recipes = data.meals.map { dto in
+        guard let meals = data.meals else { return [] }
+        let recipes = meals.map { dto in
             Recipe(id: dto.idMeal,
                  name: dto.strMeal,
                  thumbNail: dto.strMealThumb,
@@ -35,7 +36,7 @@ actor RecipeDataManager: RecipeDataService {
     /// - Parameter id: the id of the recipe
     /// - Returns: the Recipe object for the `id`
     func getRecipeDetails(id: String) async throws -> Recipe {
-        guard let recipe = try await networkManager.getRecipeDetails(id: id).meals.first else { throw RecipeError.unknownRecipe }
+        guard let recipe = try await networkManager.getRecipeDetails(id: id).meals?.first else { throw RecipeError.unknownRecipe }
         return Recipe(id: recipe.idMeal,
                     name: recipe.strMeal,
                     thumbNail: recipe.strMealThumb,
@@ -46,7 +47,9 @@ actor RecipeDataManager: RecipeDataService {
     private func convertIngredient(name: String?, measurement: String?) -> Ingredient? {
         if let name, let measurement {
             if !name.isEmpty && !measurement.isEmpty {
-                return .init(name: name.capitalized, measurement: measurement)
+                return .init(name: name.capitalized, 
+                             measurement: measurement,
+                             thumbnail: "https://www.themealdb.com/images/ingredients/\(name)-Small.png")
             }
         }
         return nil

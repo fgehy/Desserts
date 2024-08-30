@@ -39,7 +39,7 @@ final class NetworkManagerTests: XCTestCase {
         let data =  try await networkManager.getRecipes(category: "dessert")
         
         //Then
-        XCTAssertEqual(data.meals.count, 65)
+        XCTAssertEqual(data.meals?.count, 65)
     }
     
     func test_IssueMakingRemoteRequestForReceipeDetail_ShouldReceiveApaimBalikRecipe() async throws {
@@ -50,7 +50,7 @@ final class NetworkManagerTests: XCTestCase {
         let data = try await networkManager.getRecipeDetails(id: "")
         
         //Then
-        if let meal = data.meals.first {
+        if let meal = data.meals?.first {
             XCTAssertEqual(meal.strMeal, "Apam balik")
         } else {
             XCTFail("Did not receive meal")
