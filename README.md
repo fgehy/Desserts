@@ -37,7 +37,7 @@ UI Assets
         
 ## Unit Testing
 Critical functionality in managers are covered by unit tests.
-   - 88.6% coverage for `RecipeNetworkManager`
+   - 75% coverage for `RecipeNetworkManager`
    - 100% coverage for `RecipeDataManager`    
 
 Critical functionality in view models are covered by unit tests.
