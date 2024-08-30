@@ -15,6 +15,7 @@ struct Ingredient {
     
     let name: String
     let measurement: String
+    var thumbnail: String?
 }
 
 extension Ingredient: Hashable, Identifiable {}

@@ -17,10 +17,23 @@ struct RecipeDetailIngredientsView: View {
                 .font(.title)
             
             ForEach(ingredients) { ingredient in
-                HStack {
+                HStack(spacing: 5) {
+                    let url = URL(string: ingredient.thumbnail ?? "")
+                    AsyncImage(url: url) { image in
+                        image
+                            .resizable()
+                            .scaledToFit()
+                    } placeholder: {
+                        Color.orange.opacity(0.5)
+                    }
+                    .clipShape(Circle())
+                    .frame(width: 25, height: 25)
+
                     Text(ingredient.name + ":")
                         .font(.callout)
+                    
                     Spacer()
+                    
                     Text(ingredient.measurement)
                         .font(.callout)
                         .padding(.bottom, 5)
